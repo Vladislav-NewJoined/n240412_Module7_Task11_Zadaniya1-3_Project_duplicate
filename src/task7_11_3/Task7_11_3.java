@@ -1,7 +1,5 @@
 package task7_11_3;
 
-//import task7_11_1.Products2;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -44,17 +42,13 @@ public class Task7_11_3 {
 
         // Сортируем по цене
         System.out.println("\nСОРТИРУЕМ КАТАЛОГ ПО ЦЕНЕ (по возрастанию):");
-//        catalog.stream().sorted(Comparator.comparing(Products2::getPrice)).collect(Collectors.toList())
         catalog.stream().sorted(Comparator.comparing(Products2::getPrice)).toList()
                 .forEach(System.out::println);
-//                System.out.println();
 
         // Фильтруем относительно доступности товара в текущий момент для заказа
         System.out.println("\nФИЛЬТРУЕМ ОТНОСИТЕЛЬНО ДОСТУПНОСТИ ТОВАРА ДЛЯ ЗАКАЗА: \n(исключаем позицию, которая на складе отсутствует)");
         catalog.stream()
-//                        .sorted(Comparator.comparing(Products2::getPrice)).toList()
                 .filter(p -> p.getQtyInStock() != 0/*, qtyInStock*/)
-//                        .forEach(System.out::println);
                 .forEach(p -> System.out.printf("Наименование: %s, Цена: %d, Кол-во на складе: %d.%n",
                         p.getName(), p.getPrice(), p.getQtyInStock())
                 );
@@ -119,14 +113,6 @@ public Products2(String name, int price, int qtyInStock, int qtyOrdered) {
     this.setQtyOrdered(qtyOrdered);
 }
 
-//    @Override
-//    public String toString() {
-//        return "Наименование: '" + getName() + '\'' +
-//                ", Цена: " + getPrice() +
-//                ", Кол-во в наличии на складе: " + getQtyInStock() +
-//                ", Кол-во заказано: " + getQtyOrdered();
-//    }
-
 public String getName() {
     return name;
 }
@@ -169,10 +155,8 @@ public String toString() {
             '}';
 }
 
-// class Products2
 public void sell() {
     this.qtyInStock -= this.qtyOrdered;
     this.qtyOrdered = 0;
+    }
 }
-}
-
